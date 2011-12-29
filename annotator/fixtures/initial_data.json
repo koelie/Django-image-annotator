@@ -1,0 +1,13 @@
+[{"pk": 1, "model": "annotator.label", "fields": {"has_area": true, "name": "Shop logo"}}, 
+{"pk": 2, "model": "annotator.label", "fields": {"has_area": true, "name": "Total"}}, 
+{"pk": 7, "model": "annotator.labelvalue", "fields": {"position": 0, "value": "Total visible", "label": 2}}, 
+{"pk": 1, "model": "annotator.labelvalue", "fields": {"position": 1, "value": "Sainsbury's", "label": 1}}, 
+{"pk": 8, "model": "annotator.labelvalue", "fields": {"position": 1, "value": "Total not or partly visible", "label": 2}}, 
+{"pk": 2, "model": "annotator.labelvalue", "fields": {"position": 2, "value": "Tesco", "label": 1}}, 
+{"pk": 3, "model": "annotator.labelvalue", "fields": {"position": 3, "value": "Morrisons", "label": 1}}, 
+{"pk": 10, "model": "annotator.labelvalue", "fields": {"position": 4, "value": "Waitrose", "label": 1}}, 
+{"pk": 11, "model": "annotator.labelvalue", "fields": {"position": 5, "value": "Aldi", "label": 1}}, 
+{"pk": 9, "model": "annotator.labelvalue", "fields": {"position": 6, "value": "TK Maxx", "label": 1}}, 
+{"pk": 12, "model": "annotator.labelvalue", "fields": {"position": 7, "value": "Pizza Express", "label": 1}}, 
+{"pk": 4, "model": "annotator.labelvalue", "fields": {"position": 90, "value": "Other", "label": 1}}, 
+{"pk": 6, "model": "annotator.labelvalue", "fields": {"position": 92, "value": "Logo not or partly visible", "label": 1}}]

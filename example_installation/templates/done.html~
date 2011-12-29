@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h3>Images</h3>
+
+<p>{{ num_images }} images in dataset. <a href="{% url annotator_scan %}">Scan for images</a></p>
+
+<h3>Labels</h3>
+
+{% for key, val in labels.items %}
+    <h4>{{ key }}:</h4> 
+    {{ val }} images annotated. <a href="{% url annotator_annotate label=key %}">Annotate {{ key }}</a>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+Django Image Annotator
+======================
+
+This little app allows you to annotate a directory of images with bounding boxes and labels.
+
+Installation
+------------
+
+1. Copy the annotator directory to your django project.
+2. Add 'annotator' to the INSTALLED_APPS tuple in settings.py
+3. add a setting called IMAGE_PATH to your settings.py. 
+   This is the path containing image files to annotate (relative to MEDIA_ROOT)
+4. add the following line to your urls.py:
+   url(r'^annotator/', include('annotator.urls')),
+4. run these two commands: 
+    - python manage.py syncdb 
+    - python manage.py collectstatic
+
+Usage
+-----
+
+If you're running the server locally, you can find the app's pages at
+http://127.0.0.1:8000/annotator/. 
+You'll first need to click the link to scan the directory of images to 
+annotate. Then you can annotate each of the labels, one image at a time.
+You can add new labels to annotate via the admin.
+
+There's an example installation included in the "example_installation" folder.
+This uses sqlite3 as the db and comes with 3 images. It should just work with
+python manage.py runserver
+
+
+

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript">
+
+function preview(img, selection) {
+<!--    console.log('selection '+selection.x1+" "+selection.x2+" "+selection.y1+" "+selection.y2 +" "+selection.width);-->
+    if (!selection.width || !selection.height)
+        return;
+    
+    $('#x1').val(selection.x1);
+    $('#y1').val(selection.y1);
+    $('#x2').val(selection.x2);
+    $('#y2').val(selection.y2);
+}
+
+function check_area(){
+    {% if label.has_area %}
+    if($('#x1').val() == "-1"){
+        alert('please select an area first');
+        return false;
+    }
+    {% endif %}
+
+    return true;
+}
+
+$(document).ready(function () {
+    $('#photo').imgAreaSelect({ handles: true, fadeSpeed: 200, onSelectChange: preview });
+});
+
+</script>
+
+{% if msg %}<p id="msg">{{ msg }}</p>{% endif %}
+
+<h3>{{ label }} annotation ({{ num_left }} left to annotate)</h3>
+
+<p>Draw a bounding box around the {{ label }} (by clicking and dragging on the image) and click the button with the correct label</p>
+
+<img id="photo" src="{{ image.image.url }}" style="width: 500px"/>
+
+<form method="POST" action="">{% csrf_token %}
+    <input type="hidden" name="image_id" value="{{ image.pk }}"/>
+    <h3>Selected area</h3>
+    <div class="form_elem">
+    <label for="x1">X<sub>1</sub></label>
+    <input type="text" name="x1" id="x1" value="-1" readonly="readonly">
+    <label for="x2">X<sub>2</sub></label>
+    <input type="text" name="x2" id="x2" value="-1" readonly="readonly">
+    </div>
+    <div class="form_elem">
+    <label for="y1">Y<sub>1</sub></label>
+    <input type="text" name="y1" id="y1" value="-1" readonly="readonly">
+    <label for="y2">Y<sub>2</sub></label>
+    <input type="text" name="y2" id="y2" value="-1" readonly="readonly">
+    </div>
+
+    <h3>Select a label</h3>
+
+    {% for val in label.labelvalue_set.all %}
+    <input type="submit" name="value" value="{{ val.value }}" onclick="return check_area();"/>
+    {% endfor %}
+
+</form>
+
+{% endblock %}
